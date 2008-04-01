@@ -18,7 +18,6 @@ namespace Scene {
      */
     QuadTransformer::QuadTransformer() 
         : mCount(500), mHSize(100){
-        
     }
 
     /**

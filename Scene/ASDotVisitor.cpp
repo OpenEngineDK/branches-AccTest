@@ -10,6 +10,8 @@
 #include <Scene/ASDotVisitor.h>
 #include <Scene/QuadNode.h>
 #include <Scene/BSPNode.h>
+#include <Scene/VertexArrayNode.h>
+#include <Scene/VertexArray.h>
 
 namespace OpenEngine {
 namespace Scene {
@@ -122,6 +124,19 @@ void ASDotVisitor::VisitBSPNode(BSPNode* node) {
 //         b->Accept(*this);
 //     }
 
+}
+
+void ASDotVisitor::VisitVertexArrayNode(VertexArrayNode* node) {
+    ostringstream label;
+    list<VertexArray*> arrays = node->GetVertexArrays();
+
+    label << "VertexArrays: " << arrays.size() << "\\n";
+    int i=0;
+    for(list<VertexArray*>::iterator itr = arrays.begin(); itr!=arrays.end(); itr++, i++ ){
+        VertexArray* va = (*itr);
+        label << "VA #" << i << " Faces: " << va->GetNumFaces() << "\\n";
+    }
+    VisitNode((ISceneNode*)node, label.str());
 }
 
 } // NS Scene

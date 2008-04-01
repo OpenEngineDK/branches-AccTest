@@ -1,4 +1,4 @@
-// 
+// Program name and description
 // -------------------------------------------------------------------
 // Copyright (C) 2007 OpenEngine.dk (See AUTHORS) 
 // 
@@ -7,28 +7,27 @@
 // See the GNU General Public License for more details (see LICENSE). 
 //--------------------------------------------------------------------
 
-#ifndef _OE_AS_DOT_VISITOR_H_
-#define _OE_AS_DOT_VISITOR_H_
 
-#include <Scene/DotVisitor.h>
+#ifndef _VERTEX_ARRAY_TRANSFORMER_H_
+#define _VERTEX_ARRAY_TRANSFORMER_H_
+
+#include <Scene/ISceneNodeVisitor.h>
 
 namespace OpenEngine {
 namespace Scene {
 
-/**
- * Short description.
- *
- * @class ASDotVisitor ASDotVisitor.h Scene/ASDotVisitor.h
- */
-class ASDotVisitor : public DotVisitor {
+class VertexArrayTransformer : public ISceneNodeVisitor{
 public:
-    virtual void VisitQuadNode(QuadNode* node);
-    virtual void VisitBSPNode(BSPNode* node);
-    virtual void VisitVertexArrayNode(VertexArrayNode* node);
+    VertexArrayTransformer();
+    ~VertexArrayTransformer();
+
+    void Transform(ISceneNode& node);
+    void VisitGeometryNode(GeometryNode* node);
 
 };
 
 } // NS Scene
 } // NS OpenEngine
 
-#endif // _OE_AS_DOT_VISITOR_H_
+
+#endif //_VERTEX_ARRAY_TRANSFORMER_H_
